@@ -1,0 +1,20 @@
+<center><div class="container padnav stars form-column">
+  <form action=<%= "review" %> method="post">
+    <h2>RATE:</h2>
+    <div class="stars-container">
+        <% 5.downto(1).each do |n| %>
+            <input class="star star-<%= n %>" id="star-<%= n %>" type="radio" name="star" value="<%= n %>"/>
+            <label class="star star-<%= n %>" for="star-<%= n %>"></label>
+        <% end %>
+    </div>
+    <br>
+    <br>
+    <label>Comments:</label>
+    <input name="comm" class="form-control">
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+</center>
+
+<script type="text/javascript" src="../../js/jquery-1.8.0.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>

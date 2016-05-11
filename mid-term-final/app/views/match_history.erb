@@ -1,0 +1,73 @@
+<div class="container padnav">
+  <h2>Your Previous Matches:</h2>
+  <table class="table">
+    <thead>
+      <tr class="text-red">
+        <th>#</th>
+        <th>Location</th>
+        <th>Opponent</th>
+        <th>Created At</th>
+        <th>Status</th>
+        <th>Review</th>
+        <th>Comments</th>
+        <th>Opponents Review</th>
+        <th>Opponents Comments</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <% @num=1 %>
+      <% @matches.each do |match| %>
+      <tr>
+       <td><a href="/match/<%= match.id %>"><%= @num %></a></td>
+        <td><%= match.address %></td>
+        <td class="text-capitalize">
+        <% if @user.id != match.player_one_id %>
+            <%= match.player_one.username %>
+        <% else %>
+            <%= match.player_two.username %>
+        <% end %>
+        </td>
+        <td><%= match.created_at.to_date %></td>
+        <td><a href="/match/<%= match.id %>"><button type="button" class="btn-success"> View Match</button></a></td>
+       <td>
+
+         <% @num +=1 %>
+          <% match.reviews.each do |review| %>
+           <% if review.reviewed_by_player == @user %>
+              <% review.rating.times do %>
+              <input class="star star-1" id="star-1" type="radio" name="star" value="1"/>
+              <label class="star star-1" for="star-1"></label>
+              <% end %>
+            <% end %>
+          </td>
+          <td>
+            <% if review.reviewed_by_player == @user %>
+            <%= review.comments %>
+            <% end %>
+          <% end %>
+          </td>
+        <td>
+          <% match.reviews.each do |review| %>
+              <% if review.reviewed_player == @user %>
+                <% review.rating.times do %>
+                <input class="star star-1" id="star-1" type="radio" name="star" value="1"/>
+                <label class="star star-1" for="star-1"></label>
+                <% end %>
+               <% end %>
+              </td>
+              <td>
+                 <% if review.reviewed_player == @user %>
+                   <%= review.comments %>
+                <% end %>
+          <% end %>
+          </td>
+      <% end %>
+     </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- js -->
+<script type="text/javascript" src="../../js/jquery-1.8.0.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>

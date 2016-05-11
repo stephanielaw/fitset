@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" 
+     type="image/jpg" 
+     href="../../img/favicon.jpg">
+  <link href="../../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../css/stylesheet.css" rel="stylesheet">
+  <link href="../../css/simple-sidebar.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css"
+      href="https://fonts.googleapis.com/css?family=Fira Sans">
+  <link rel="stylesheet" type="text/css"
+      href="https://fonts.googleapis.com/css?family=Roboto">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/javascript/application.js"></script>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <title>FITSET</title>
+</head>
+
+<body>
+<!-- navbar start-->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navcollapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+        <div class="navbar-brand">FiTSET</div>
+       </div>
+
+    <div class="collapse navbar-collapse" id="navcollapse">
+      <ul class="nav navbar-nav">
+          <li><a href="/#homeslider">HOME</a></li>
+          <li><a href="/#how">HOW IT WORKS</a></li>
+      </ul>
+
+<div class="navbar-right navbar-form">
+
+  <% if @user %>
+    <a href="/welcome"><button type="button" class="btn btn-success">Play Now!</button></a>
+
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+
+      <img src="../../img/profile.svg">
+    </a>
+    <ul class="dropdown-menu">
+      <li class="text-capitalize text-center">Hi <%= @user.username %>!</li>
+      <% if @user.profile_pic? %>
+      <center><img class="profile_sm" src="../../uploads/<%=@user.profile_pic%>"></center>
+      <% end %>
+      <hr>
+      <li><a href="/profilepage">Profile</a></li>
+      <li><a href="/welcome">Play Now!</a></li>
+      <li><a href="/match_history">Match History</a></li>
+      <li><a href="/logout">Logout</a></li>
+    </ul>
+
+    </div>
+  <% else  %>
+    <a href="/signup"><button type="button" class="btn btn-danger">Sign Up</button></a>
+      <div class="dropdown" id="menuLogin">
+        <button class="dropdown-toggle btn btn-success" type="button" href="#" data-toggle="dropdown" id="navLogin">Login</button>
+        <div class="dropdown-menu" style="padding:17px;">
+          <form action="/session" method="POST"> 
+            <input name="username" type="username" placeholder="Username"> 
+            <input name="password" type="password" placeholder="Password"><br>
+            <button type="submit" class="btn btn-success">Go</button>
+        </form>
+            </div>
+        </div>  
+  <% end %>
+        </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </nav>
+<!-- navbar end -->
+  <%= yield %>
+</body>
+</html>

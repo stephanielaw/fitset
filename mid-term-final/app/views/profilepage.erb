@@ -1,0 +1,54 @@
+<div class="container padnav form-column">
+<h2>My Profile:</h2>
+<% if @user.profile_pic? %>
+  <img class="profile_med" src="uploads/<%=@user.profile_pic%>">
+  <p class="text-red">Change Profile Pic:</p>
+<form action="upload" enctype="multipart/form-data" method="POST">
+  <input type="file" name="myfile">
+  <button class="btn-small btn-success inline" type="sumbit">Submit</button>
+</form>
+
+<% else %>
+<p class="text-red">No Profile Picture</p><br>
+<form action="upload" enctype="multipart/form-data" method="POST">
+  <input type="file" name="myfile">
+  <button class="btn-small btn-success inline" type="sumbit">Submit</button>
+<% end %>
+
+<br>
+<table class="table">
+<tbody>
+<tr>
+<td class="text-red">Username:</td>
+<td><%= @user.username %></td>
+</tr>
+
+<tr>
+<td class="text-red">Name:</td>
+<td><%= @user.first_name %> <%= @user.last_name %></td>
+</tr>
+
+<tr>
+<td class="text-red">Email:</td>
+<td><%= @user.email %></td>
+</tr>
+
+<tr>
+<td class="text-red">Phone:</td>
+<td><%= @user.phone %></td>
+</tr>
+
+<tr>
+<td class="text-red">Member Since:</td>
+<td><%= @user.created_at.to_date %></td>
+</tr>
+
+
+</tbody>
+</table>
+</br>
+</div>
+
+<!-- js -->
+<script type="text/javascript" src="../../js/jquery-1.8.0.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>

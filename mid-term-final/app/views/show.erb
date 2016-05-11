@@ -1,0 +1,124 @@
+<div class="container padnav">
+  <h2>Match Details</h2>
+  <table class="table text-center">
+    <thead>
+      <tr class="text-red">
+        <th class="text-center">Player 1</th>
+        <th class="text-center">Details</th>
+        <th class="text-center">Player 2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @match.player_one.username %>
+          <% if @match.player_one.profile_pic? %>
+      <center><img class="profile_sm" src="../uploads/<%= @match.player_one.profile_pic %>"></center>
+      <% end %>
+        </td>
+        <td><b>VS</b></td>
+        <td>
+          <% if @match.player_two != nil %>
+            <%= @match.player_two.username %>
+          <% if @match.player_two.profile_pic? %>
+      <center><img class="profile_sm" src="../uploads/<%= @match.player_two.profile_pic %>"></center>
+      <% end %>
+          <% else %>
+          <%end %></td>
+      </tr>
+      <tr>
+      <td class="text-capitalize"><%= @match.player_one.first_name %> <%= @match.player_one.last_name %></td>
+      <td><%= @match.sport_id %></td>
+      <td>
+        <% if @match.player_two != nil %>
+            <%= @match.player_two.first_name %> <%= @match.player_two.last_name %>
+        <% else %>
+        <%end %>
+      </td>
+      <!-- email -->
+      <tr>
+        <td><% if @match.player_one != nil %>
+            <%= @match.player_one.email %>
+        <%end %></td>
+        <td><%= @match.address %></td>
+        <td><% if @match.player_two != nil %>
+            <%= @match.player_two.email %>
+        <%end %></td>
+      </tr>
+      <!-- Phone -->
+       <tr>
+        <td><% if @match.player_one != nil %>
+            <%= @match.player_one.phone %>
+        <%end %></td>
+        <td><%= @match.start_time %> to <%= @match.end_time %></td>
+        <td><% if @match.player_two != nil %>
+            <%= @match.player_two.phone %>
+        <% else %>
+        <%end %></td>
+      </tr>
+      <tr>
+      </tr>
+      <tr>
+      <td></td>
+      <td>    
+        <% if @match.player_two == nil && @match.player_one.id != @user.id%>
+          <form action="/challenge/<%= @match.id %>" method="POST">
+            <button type="submit" name="challenge" class="btn btn-danger">Join</button>
+          </form>
+        <% elsif @match.player_one.id == @user.id && @match.player_two != nil  %>
+          <a href= <%= "/match/#{@match.id}/review" %>>
+          <button name="review" class="btn btn-danger">Review</button>
+
+        <% elsif @match.player_one_id == @user.id && @match.player_two == nil %>
+          <a href= <%= "/match/#{@match.id}/review" %>>
+          <form action="/match/<%= @match.id%>/delete_match" method="post">
+            <button name="delete" class="btn btn-danger">Close Match</button>
+          </a>          
+          </form>
+        <% elsif @match.reviews.length == 0 %>
+          <a href= <%= "/match/#{@match.id}/review" %>>
+            <button name="review" class="btn btn-danger">Review</button>
+          </a>
+        <% else %>
+          <h2> You reviewed this match as: </h2>
+            <% @match.reviews.each do |review| %>
+            <% if review.reviewed_by_player == @user %>
+            <% review.rating.times do %>
+            <input class="star star-1" id="star-1" type="radio" name="star" value="1"/>
+            <label class="star star-1" for="star-1"></label>
+          <% end %>
+          <% end %>
+          <% end %>
+          <h2>Your comments for this match</h2>
+             <% @match.reviews.each do |review| %>
+            <% if review.reviewed_by_player == @user %>
+                 <%= review.comments %>
+          <% end %>
+          <% end %>
+          <h2>Your opponent review for this match:</h2>
+          <% @match.reviews.each do |review| %>
+            <% if review.reviewed_player == @user %>
+            <% review.rating.times do %>
+            <input class="star star-1" id="star-1" type="radio" name="star" value="1"/>
+            <label class="star star-1" for="star-1"></label>
+          <% end %>
+          <% end %>
+          <% end %>
+          <h2>Your opponents comments for this match:</h2>
+             <% @match.reviews.each do |review| %>
+            <% if review.reviewed_player == @user %>
+                 <%= review.comments %>
+          <% end %>
+          <% end %>
+        <% end %>
+      </td>
+      <td></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+
+
+<!-- js -->
+<script type="text/javascript" src="../../js/jquery-1.8.0.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>

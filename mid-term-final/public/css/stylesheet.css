@@ -1,0 +1,228 @@
+/*TEXT*/
+
+/*NAVBAR START*/
+/*navbar text color*/
+
+html{
+  overflow-y: scroll; 
+}
+
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a {
+  color:#FFFFFF;
+  font-family:"Fira Sans";
+  font-size:1em;
+  font-style: bold;
+} 
+
+/*navbar text color hover*/
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+  color:#f70c1f;
+  background-color: #FFFFFF;
+  transition: .5s;
+}
+
+/*navbar background color*/
+.navbar-inverse {
+  background-color: #000000;
+  color: red;
+  border: none;
+}
+
+/*navbar brand color*/
+.navbar-inverse .navbar-brand {
+  color:#f70c1f;
+  font-family:"Fira Sans";
+  font-size:2.25em;
+  font-weight: 900;
+}
+
+.navbar-inverse .navbar-brand:hover {
+  color:#f70c1f;
+}
+
+.navbar-right .navbar-form {
+  display: inline-block;
+}
+
+#menuLogin {
+  display: inline-block;
+}
+
+
+/*NAVBAR END*/
+
+/*HEADINGS*/
+
+h1 {
+  font-size:3em;
+}
+
+h2 {
+  font-family:"Fira Sans";
+  font-style: bold;
+  font-size:2em;
+}
+
+h3 {
+  font-family:"Fira Sans";
+  font-style: bold;
+  font-size:1em;
+}
+
+.text-red {
+  font-family:"Fira Sans";
+  color:#f70c1f;
+}
+/*CONTAINERS*/
+
+.jumbotron {
+  background-color: white;
+  
+}
+
+.padnav {
+  padding-top:50px;
+}
+
+.test {
+  font-size: 1em;
+  font-family:"Fira Sans";
+  color:#000000;
+}
+
+.sports .row {
+  text-align: :center;
+  margin: auto;
+}
+
+.col-xs-4 {
+  text-align: center;
+}
+
+.col-xs-4 > p {
+  text-align: center;
+  font-size: 1em
+}
+
+.col-xs-6 {
+  text-align: center;
+}
+
+.col-xs-6 > p {
+  text-align: center
+}
+
+/* profile */
+.profile_med {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.profile_sm {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+/* welcome */
+
+.icon {
+  opacity:.75;
+}
+
+.icon:hover {
+  opacity: 1;
+}
+
+.col-xs-4 .sports > img {
+  width:80%;
+}
+
+/*transparent button*/
+.transparent {
+  background-color: transparent;
+  border: none;
+}
+
+.transparent > img {
+  width: 100%;
+}
+
+/*carousel*/
+
+.carousel {
+  padding-top: 50px;
+  background:black;
+}
+
+.carousel-caption {
+    color: white;
+    text-align: center;
+    /*top: auto;*/
+  /*position: relative;*/
+  top: 50%;
+  transform: translateY(-50%);
+  bottom: initial;
+}
+
+.carousel-inner {
+}
+
+.carousel-inner > .item > img {
+    padding-top: 50px
+    margin: 0 auto;
+    width: 100%;
+}
+
+.footer > p {
+  text-align: center;
+}
+
+.container {
+}
+
+.form-column {
+  background-color:rgba(255,255,255,0.5);
+  display: block;
+  margin:auto;
+  width:35% 
+}
+
+div.stars {
+  width: 270px;
+  display: inline-block;
+}
+
+input.star { display: none; }
+
+label.star {
+  padding: 5px;
+  font-size: 20px;
+  color: #444;
+  transition: all .2s;
+}
+
+
+input.star:checked ~ label.star:before {
+  content: '\f005';
+  color: #FD4;
+  transition: all .25s;
+}
+
+input.star-5:checked ~ label.star:before {
+  color: #FE7;
+  text-shadow: 0 0 20px #952;
+}
+
+input.star-1:checked ~ label.star:before { color: #F62; }
+
+label.star:hover { transform: rotate(-15deg) scale(1.3); }
+
+label.star:before {
+  content: '\f006';
+  font-family: FontAwesome;
+}
+

@@ -1,0 +1,46 @@
+<div class="container padnav form-column">
+  <form action='new_match' method='POST'>
+  <h2>Create Match</h2>
+  <label>Sport:</label>
+  <%= @sport.name %>
+  <br>
+
+  <label>Location:</label>
+  <select name="address" class="form control">
+  <optgroup label="Peel Region">
+  <option value="Brampton">Brampton</option>
+  <option value="Mississauga">Mississauga</option>
+  <option value="Caledon">Caledon</option>
+  </optgroup>
+  <optgroup label="York Region">
+  <option value="Aurora">Aurora</option>
+  <option value="Markham">Markham</option>
+  <option value="Newmarket">Newmarket</option> 
+  <option value="Richmond Hill">Richmond Hill</option>
+  <option value="Vaughan">Vaughan</option>
+  <option value="Stoufville">Stoufville</option>
+  </optgroup>
+  <optgroup label="Toronto">
+  <option value="Downtown Toronto">Downtown Toronto</option>
+  <option value="East York">East York</option>
+  <option value="Etobicoke">Etobicoke</option> 
+  <option value="Scarborough">Scarborough</option>
+  <option value="North York">North York</option>
+  <option value="York">York</option>
+  </optgroup>
+  </select>
+  <br>
+  <label>Start Time:</label>
+  <input type="start_time" name="start_time" class="form-control">
+  <label>End Time:</label>
+  <input type="end_time" name="end_time" class="form-control">
+  <br>
+
+  <button class="btn btn-lg btn-success btn-block" type="submit">Submit</button>
+
+</form>
+</div>
+
+<!-- js -->
+<script type="text/javascript" src="../../js/jquery-1.8.0.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
